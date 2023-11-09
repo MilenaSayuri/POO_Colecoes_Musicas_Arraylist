@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import static javax.swing.JOptionPane.showMessageDialog;
 import static javax.swing.JOptionPane.showInputDialog;
 import static java.lang.Integer.parseInt;
+import java.util.Collections;
 
 public class GerenciaPlaylist {
     public static void main(String[] args) {
@@ -23,8 +24,39 @@ public class GerenciaPlaylist {
                     showMessageDialog(null,"OKAY, ADICIONOU!");
                     break;
                 }
-                case 2:
-
+                case 2:{
+                    var sb = new StringBuilder(""); //construtor de string
+                    //for each our enhanced for
+                    Collections.sort(musicas);
+                    for(Musica m : musicas){ //m faz referencia a musicas
+                        sb
+                        .append(m) //append é de concatenar, encaixar -- o toString esta nao explicito mas ta ai
+                        .append("\n")
+                        .append("***********************")
+                        .append("\n");
+                    }
+                    //refaça com o for normal
+                    // for(int i = 1; i <= musicas.size(); ++i){
+                    //     sb
+                    //     .append(musicas.get(i - 1))
+                    //     .append("\n")
+                    //     .append("***********************");
+                    // }
+                    showMessageDialog(null, sb);
+                    break;
+                }
+                case 3:{
+                    //ordenar por avaliação
+                    Collections.sort(musicas, new ComparadorPorTitulo());
+                    var sb = new StringBuilder("");
+                    for(Musica m : musicas){ //m faz referencia a musicas
+                        sb
+                        .append(m) //append é de concatenar, encaixar -- o toString esta nao explicito mas ta ai
+                        .append("\n")
+                        .append("***********************")
+                        .append("\n");
+                    }
+                }
             }
         }while (op != 0 );
 
